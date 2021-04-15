@@ -16,8 +16,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.hb.fantasyleague.model.Country;
 import com.hb.fantasyleague.model.Leagues;
 import com.hb.fantasyleague.model.TeamPosition;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 @Service
 public class FootballApiClient {
@@ -46,8 +44,8 @@ public class FootballApiClient {
 		  this.restTemplate=restTemplate;
 	  }
 	  
-	  @HystrixCommand(fallbackMethod = "getCountries_default",  commandProperties = {
-	  @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000") })
+	 // @HystrixCommand(fallbackMethod = "getCountries_default",  commandProperties = {
+	 /// @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000") })
 	  public Country[] getCountries() {
 		    Map<String, String> queryParams = new HashMap<>();
 		    queryParams.put("action", countriesAction);
@@ -62,8 +60,8 @@ public class FootballApiClient {
 		  }
 
 	  
-	  @HystrixCommand(fallbackMethod = "getLeagues_default",  commandProperties = {
-		      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000") })
+	 // @HystrixCommand(fallbackMethod = "getLeagues_default",  commandProperties = {
+	//	      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000") })
 	  public Leagues[] getLeagues(int countryId) {
 		    Map<String, String> queryParams = new HashMap<>();
 		    queryParams.put("action", leaguesAction);
@@ -81,8 +79,8 @@ public class FootballApiClient {
 		  }
 
 	  
-	  @HystrixCommand(fallbackMethod = "getTeamStanding_default",  commandProperties = {
-		      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000") })
+	//  @HystrixCommand(fallbackMethod = "getTeamStanding_default",  commandProperties = {
+	//	      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000") })
 	  public TeamPosition[] getTeamStanding(int leagueId) {
 		    Map<String, String> queryParams = new HashMap<>();
 		    queryParams.put("action", standingsAction);

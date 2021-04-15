@@ -25,7 +25,7 @@ public class TeamPositionController {
 	@Autowired
 	public TeamPositionController(TeamPositionService teamPositionService) {
 		this.teamPositionService = teamPositionService;
-	}
+	}	
 
 	@GetMapping
 	public ResponseEntity<TeamPositionDto> getStandings(@RequestBody TeamPostionRequest teamPostionRequest) {
