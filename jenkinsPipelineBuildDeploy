@@ -1,0 +1,17 @@
+node {
+    def mvnHome
+    stage('checkout') {
+        git 'https://github.com/Hemant5171/fantasy-league.git'
+    }
+    stage('build') {
+          bat(/mvn clean install /)
+    }
+    stage('result') {
+        junit '**/target/surefire-reports/TEST-*.xml'
+        archiveArtifacts 'target/*.jar'
+    }
+    stage("staging") {
+        echo "deploying the app to stage"
+        bat(/start java -jar -Dserver.port=8090 target\fantasy-league-0.0.1-SNAPSHOT.jar/)
+    }
+}
