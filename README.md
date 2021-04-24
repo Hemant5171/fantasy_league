@@ -1,9 +1,10 @@
 FootBall Fantasy Leaque
 
-Description : Football Fantasy League is a spring boot application,containing a microservice to find standings of a team playing league football match using country name, league name and team name
+Description : Football Fantasy League is a spring boot application,containing a microservice to find standings of a team playing league football match using country name, league name and team name.
 
-URL : http://localhost:8080/api/service/v1/team/position/{"teamName":"Rajasthan Royals","countryName":"India","leagueName":"IPL"}
-Response : {"country":"(100) - India","league":"(1000) - IPL","team":"(0) - Rajasthan Royals","positions":0}
+URL : http://localhost:8080/api/service/v1/team/position/
+Request :  {"teamName":"Watford","countryName":"England","leagueName":"Championship"}
+Response : {"country":"(100) - England","league":"(1000) - Championship","team":"(0) - Watford","positions":0}
 
 Installation Steps:
 
