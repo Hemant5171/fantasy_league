@@ -32,16 +32,34 @@ public class TeamPositionService {
 		TeamPosition teamStanding = initializePosition(teamPostionRequest);
 		List<Country> countries = getCountries();
 		Country country = getCountryByName(teamPostionRequest, countries);
+		if(null!=country)
+		{
 		teamStanding.setCountryId(country.getId());
+		}
+		else {
+			return null;
+		}
 
 		List<Leagues> leaguesList = getLeagues(country.getId());
 		Leagues leagues = getLeaguesByName(teamPostionRequest, leaguesList);
+		if(null!=leagues)
+		{
 		teamStanding.setLeagueId(leagues.getLeagueId());
+		}
+		else {
+			return null;
+		}
 		List<TeamPosition> teamStandings = getTeamStanding(leagues.getLeagueId());
 		log.info("team standing found {}", teamStandings.toString());
 
 		TeamPosition teamStandingsFiltered = getFilteredTeamStanding(teamPostionRequest, teamStandings);
+		if(null!=teamStandingsFiltered)
+		{
 		teamStandingsFiltered.setCountryId(country.getId());
+		}
+		else {
+			return null;
+		}
 		log.info("team standing filtered found {}", teamStandingsFiltered.toString());
 		if (teamStandingsFiltered.getTeamId() == 0) {
 			return TeamPositionDto.populateTeamPositionDto(teamStanding);
