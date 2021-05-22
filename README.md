@@ -3,8 +3,8 @@ FootBall Fantasy League
 Description : Football Fantasy League is a spring boot application,containing a micro service to find standings of a team playing league football match using country name, league name and team name
 
 URL : http://localhost:8080/api/service/v1/team/position/ </br>
-Request(JSON format): {"teamName":"Rajasthan Royals","countryName":"India","leagueName":"IPL"} </br>
-Response : {"country":"(100) - India","league":"(1000) - IPL","team":"(0) - Rajasthan Royals","positions":0} </br>
+Request(JSON format): {"teamName":"Watford","countryName":"England","leagueName":"Championship"} </br>
+Response :  {"country":"(100) - England","league":"(1000) - Championship","team":"(0) - Watford","positions":0} </br>
 
 Installation Steps:
 
